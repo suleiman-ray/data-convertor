@@ -1,0 +1,90 @@
+import asyncio
+import logging
+
+from sqlalchemy import select
+
+from app.core.config import settings
+from app.core.database import AsyncSessionLocal
+from app.core.sqs import send_message
+from app.models.enums import SubmissionStatus, UnmappedStatus
+from app.models.intake_submission import IntakeSubmission
+from app.models.unmapped_field import UnmappedField
+
+logger = logging.getLogger(__name__)
+
+
+async def requeue_needs_review_submissions(
+    intake_type_id: str,
+    intake_type_version: str,
+    stable_field_id: str,
+) -> int:
+    """
+    After a new mapping is approved, unblock all NEEDS_REVIEW submissions
+    that were blocked on that stable_field_id.
+
+    Commits + publishes per submission so a SQS failure on submission N
+    does not leave N+1 … published without a committed PROCESSING status.
+
+    Returns the count of submissions re-queued.
+    """
+    # Collect IDs in a short-lived session to avoid holding a connection
+    # across the per-submission loop below.
+    async with AsyncSessionLocal() as db:
+        blocked = list(
+            (await db.scalars(
+                select(IntakeSubmission.submission_id)
+                .join(
+                    UnmappedField,
+                    UnmappedField.submission_id == IntakeSubmission.submission_id,
+                )
+                .where(
+                    IntakeSubmission.status == SubmissionStatus.NEEDS_REVIEW,
+                    UnmappedField.intake_type_id == intake_type_id,
+                    UnmappedField.intake_type_version == intake_type_version,
+                    UnmappedField.stable_field_id == stable_field_id,
+                    UnmappedField.status == UnmappedStatus.PENDING_REVIEW,
+                )
+            )).all()
+        )
+
+    count = 0
+    for sid in blocked:
+        async with AsyncSessionLocal() as db:
+            sub = await db.scalar(
+                select(IntakeSubmission)
+                .where(IntakeSubmission.submission_id == sid)
+                .with_for_update()
+            )
+            if not sub or sub.status != SubmissionStatus.NEEDS_REVIEW:
+                continue
+
+            # A stable_field_id may appear in multiple instances within a form
+            # (e.g. a repeated question). Update ALL of them so none stay in
+            # PENDING_REVIEW, which would cause the next resolve run to flip
+            # the submission back to NEEDS_REVIEW in an infinite loop.
+            unmapped_rows = list(
+                (await db.scalars(
+                    select(UnmappedField).where(
+                        UnmappedField.submission_id == sid,
+                        UnmappedField.stable_field_id == stable_field_id,
+                        UnmappedField.status == UnmappedStatus.PENDING_REVIEW,
+                    )
+                )).all()
+            )
+            for unmapped in unmapped_rows:
+                unmapped.status = UnmappedStatus.MAPPING_CREATED
+
+            sub.status = SubmissionStatus.PROCESSING
+
+            # Publish BEFORE commit — if SQS raises, the DB rolls back and
+            # the submission stays NEEDS_REVIEW so this call can be retried.
+            await asyncio.to_thread(
+                send_message,
+                settings.sqs_resolve_normalize_queue_url,
+                {"submission_id": str(sid)},
+            )
+            await db.commit()
+            count += 1
+            logger.info("requeue: re-enqueued submission %s after mapping created", sid)
+
+    return count

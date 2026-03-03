@@ -1,0 +1,189 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: fhir
+      POSTGRES_PASSWORD: fhir
+      POSTGRES_DB: fhir_convertor
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fhir -d fhir_convertor"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  localstack:
+    image: localstack/localstack:3
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: s3,sqs
+      AWS_DEFAULT_REGION: us-east-1
+      PERSISTENCE: 0
+    volumes:
+      - ./scripts/localstack-init.sh:/etc/localstack/init/ready.d/init.sh
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:4566/_localstack/health | grep -q '\"sqs\": \"running\"'"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  setup:
+    build: .
+    command: python scripts/create_queues.py
+    env_file: .env
+    environment:
+      AWS_ENDPOINT_URL: http://localstack:4566
+    depends_on:
+      localstack:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  migrate:
+    build: .
+    command: alembic upgrade head
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://fhir:fhir@db:5432/fhir_convertor
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  api:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://fhir:fhir@db:5432/fhir_convertor
+      REDIS_URL: redis://redis:6379/0
+      AWS_ENDPOINT_URL: http://localstack:4566
+      SQS_EXTRACTION_QUEUE_URL: http://localstack:4566/000000000000/extraction-queue
+      SQS_RESOLVE_NORMALIZE_QUEUE_URL: http://localstack:4566/000000000000/resolve-normalize-queue
+      SQS_FHIR_QUEUE_URL: http://localstack:4566/000000000000/fhir-queue
+      SQS_DELIVERY_QUEUE_URL: http://localstack:4566/000000000000/delivery-queue
+    depends_on:
+      redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+      setup:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  worker-extraction:
+    build: .
+    command: python -m app.workers.extraction_worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://fhir:fhir@db:5432/fhir_convertor
+      REDIS_URL: redis://redis:6379/0
+      AWS_ENDPOINT_URL: http://localstack:4566
+      SQS_EXTRACTION_QUEUE_URL: http://localstack:4566/000000000000/extraction-queue
+      SQS_RESOLVE_NORMALIZE_QUEUE_URL: http://localstack:4566/000000000000/resolve-normalize-queue
+    depends_on:
+      redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+      setup:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  worker-resolve-normalize:
+    build: .
+    command: python -m app.workers.resolve_normalize_worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://fhir:fhir@db:5432/fhir_convertor
+      REDIS_URL: redis://redis:6379/0
+      AWS_ENDPOINT_URL: http://localstack:4566
+      SQS_RESOLVE_NORMALIZE_QUEUE_URL: http://localstack:4566/000000000000/resolve-normalize-queue
+      SQS_FHIR_QUEUE_URL: http://localstack:4566/000000000000/fhir-queue
+    depends_on:
+      redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+      setup:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  worker-fhir-builder:
+    build: .
+    command: python -m app.workers.fhir_builder_worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://fhir:fhir@db:5432/fhir_convertor
+      REDIS_URL: redis://redis:6379/0
+      AWS_ENDPOINT_URL: http://localstack:4566
+      SQS_FHIR_QUEUE_URL: http://localstack:4566/000000000000/fhir-queue
+      SQS_DELIVERY_QUEUE_URL: http://localstack:4566/000000000000/delivery-queue
+    depends_on:
+      redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+      setup:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  worker-delivery:
+    build: .
+    command: python -m app.workers.delivery_worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://fhir:fhir@db:5432/fhir_convertor
+      REDIS_URL: redis://redis:6379/0
+      AWS_ENDPOINT_URL: http://localstack:4566
+      SQS_DELIVERY_QUEUE_URL: http://localstack:4566/000000000000/delivery-queue
+    depends_on:
+      redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+      setup:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    working_dir: /app
+
+volumes:
+  postgres_data:
