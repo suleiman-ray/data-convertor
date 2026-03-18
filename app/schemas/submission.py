@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -58,5 +59,36 @@ class SubmissionSummary(BaseModel):
     received_at: datetime
     queued_at: datetime | None
     updated_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class ExtractedFieldResponse(BaseModel):
+    instance_id: uuid.UUID
+    stable_field_id: str
+    section_path: str
+    raw_label: str
+    raw_value: str | None
+    provenance: dict[str, Any]
+    extractor_version: str
+    status: str
+    failure_reason: str | None
+    extracted_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class BundleMetaResponse(BaseModel):
+    bundle_id: uuid.UUID
+    submission_id: uuid.UUID
+    bundle_uri: str
+    bundle_sha256: str
+    fhir_version: str
+    status: str
+    delivery_status: str
+    built_at: datetime | None
+    created_at: datetime
+    updated_at: datetime
+    bundle: dict[str, Any] = Field(..., description="Parsed FHIR R4 Bundle document")
 
     model_config = {"from_attributes": True}

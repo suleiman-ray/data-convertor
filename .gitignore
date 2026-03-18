@@ -45,3 +45,6 @@ postgres_data/
 
 # Logs
 *.log
+
+# Demo (local/sample data and scripts)
+demo/

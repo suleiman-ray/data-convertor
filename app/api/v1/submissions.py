@@ -1,13 +1,21 @@
+import asyncio
+import json
 import uuid
 import logging
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from fastapi.responses import JSONResponse
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.s3 import download_fhir_bundle
 from app.models.enums import SubmissionStatus
+from app.models.extracted_field import ExtractedField
+from app.models.fhir_bundle import FhirBundle
 from app.schemas.submission import (
+    BundleMetaResponse,
+    ExtractedFieldResponse,
     SubmissionCreate,
     SubmissionResponse,
     SubmissionStatusResponse,
@@ -125,6 +133,81 @@ async def rebuild_submission_endpoint(
     if submission is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Submission not found")
     return SubmissionStatusResponse.model_validate(submission)
+
+
+@router.get(
+    "/{submission_id}/fields",
+    response_model=list[ExtractedFieldResponse],
+    summary="List fields extracted from a submission",
+)
+async def list_extracted_fields(
+    submission_id: uuid.UUID,
+    db: AsyncSession = Depends(get_db),
+) -> list[ExtractedFieldResponse]:
+    """
+    Return every field that the Extraction Worker parsed out of the raw intake payload.
+    """
+    submission = await get_submission(db, submission_id)
+    if submission is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Submission not found")
+
+    result = await db.execute(
+        select(ExtractedField)
+        .where(ExtractedField.submission_id == submission_id)
+        .order_by(ExtractedField.extracted_at)
+    )
+    fields = result.scalars().all()
+    return [ExtractedFieldResponse.model_validate(f) for f in fields]
+
+
+@router.get(
+    "/{submission_id}/bundle",
+    response_model=BundleMetaResponse,
+    summary="Fetch the FHIR R4 bundle produced for a submission",
+)
+async def get_fhir_bundle(
+    submission_id: uuid.UUID,
+    db: AsyncSession = Depends(get_db),
+) -> BundleMetaResponse:
+    """
+    Return the FHIR R4 bundle for a completed submission.
+    """
+    result = await db.execute(
+        select(FhirBundle)
+        .where(FhirBundle.submission_id == submission_id)
+        .order_by(FhirBundle.created_at.desc())
+        .limit(1)
+    )
+    bundle_row = result.scalar_one_or_none()
+    if bundle_row is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No bundle found for this submission — it may still be processing.",
+        )
+
+    try:
+        bundle_json_str = await asyncio.to_thread(download_fhir_bundle, bundle_row.bundle_uri)
+        bundle_doc = json.loads(bundle_json_str)
+    except Exception as exc:
+        logger.exception("Failed to fetch bundle from S3 uri=%s", bundle_row.bundle_uri)
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"Could not retrieve bundle from storage: {exc}",
+        )
+
+    return BundleMetaResponse(
+        bundle_id=bundle_row.bundle_id,
+        submission_id=bundle_row.submission_id,
+        bundle_uri=bundle_row.bundle_uri,
+        bundle_sha256=bundle_row.bundle_sha256,
+        fhir_version=bundle_row.fhir_version,
+        status=bundle_row.status.value,
+        delivery_status=bundle_row.delivery_status.value,
+        built_at=bundle_row.built_at,
+        created_at=bundle_row.created_at,
+        updated_at=bundle_row.updated_at,
+        bundle=bundle_doc,
+    )
 
 
 @router.get(

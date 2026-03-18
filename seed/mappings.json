@@ -1,0 +1,2754 @@
+[
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cbe5cfdf",
+    "canonical_id": "demo.field.field",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8c2d5736",
+    "canonical_id": "demo.field.geographic_region",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_70612cae",
+    "canonical_id": "demo.field.ethnicity",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_72d1bbb1",
+    "canonical_id": "demo.field.reason_for_referral",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_015881e0",
+    "canonical_id": "demo.field.diagnosis",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_31b0b815",
+    "canonical_id": "demo.funding_types.funding_types",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2f772cc7",
+    "canonical_id": "demo.funding_types.person_completing_intake_relationship_to_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0f0097ed",
+    "canonical_id": "demo.funding_types.gender",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_81857470",
+    "canonical_id": "demo.client_demographics.childs_full_name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cf2d734f",
+    "canonical_id": "demo.client_demographics.home_address",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_af4f553b",
+    "canonical_id": "demo.client_demographics.tel_cell",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c89cd9f5",
+    "canonical_id": "demo.client_demographics.legal_guardian_name_relationship_to_client",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7a02c55b",
+    "canonical_id": "demo.client_demographics.formal_asd_diagnosis",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9eab73fd",
+    "canonical_id": "demo.client_demographics.client_demographics",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_86895902",
+    "canonical_id": "demo.client_demographics.clients_full_name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cee57207",
+    "canonical_id": "demo.client_demographics.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_182e653f",
+    "canonical_id": "demo.child_new_patient_history.childs_care_status",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2d63d162",
+    "canonical_id": "demo.child_new_patient_history.child_new_patient_history",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_418a2853",
+    "canonical_id": "demo.child_new_patient_history.parent_information",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0ead7235",
+    "canonical_id": "demo.child_new_patient_history.custodyvisitation_comments",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_689a38cc",
+    "canonical_id": "demo.child_new_patient_history.siblings",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_bd02f1ad",
+    "canonical_id": "demo.child_new_patient_history.primary_concern",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a9a341c4",
+    "canonical_id": "demo.past_medical_history.past_medical_history",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_480c69e2",
+    "canonical_id": "demo.past_medical_history.primary_care_provider_1_relationship_to_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_baa2c883",
+    "canonical_id": "demo.past_medical_history.contact_info",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f843e3ea",
+    "canonical_id": "demo.past_medical_history.address",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_46b1bdfe",
+    "canonical_id": "demo.past_medical_history.primary_care_provider_2_relationship_to_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_bd366162",
+    "canonical_id": "demo.past_medical_history.oap_funding_total_remaining",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_81d48874",
+    "canonical_id": "demo.past_medical_history.cultural_educational_legal_issues",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8d2448ab",
+    "canonical_id": "demo.past_medical_history.what_child_does_well",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4cc10631",
+    "canonical_id": "demo.past_medical_history.childs_solitary_playengagement_preferences",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a6b9628f",
+    "canonical_id": "demo.past_medical_history.childs_playengagement_preferences_with_others",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6d3388cf",
+    "canonical_id": "demo.past_medical_history.current_interventions",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b2fe69fd",
+    "canonical_id": "demo.past_medical_history.difficulties_adjusting_to_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_101cef47",
+    "canonical_id": "demo.past_medical_history.special_education_supportsservices_at_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8c2f7839",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.ability_to_engage_in_community_activities",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b295426d",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.areas_of_concern",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_95500613",
+    "canonical_id": "demo.communication.communication",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ad32bf86",
+    "canonical_id": "demo.relating_with_others.relating_with_others",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0d1e3b2f",
+    "canonical_id": "demo.imitation.imitation",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_54ccca74",
+    "canonical_id": "demo.response_to_sound_and_speech.response_to_sound_and_speech",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ae39ae49",
+    "canonical_id": "demo.visual_response.visual_response",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_be201300",
+    "canonical_id": "demo.other_senses.other_senses",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3bfd3424",
+    "canonical_id": "demo.emotional_responses.emotional_responses",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cfaf4df4",
+    "canonical_id": "demo.sensitivities.sensitivities",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7d293d93",
+    "canonical_id": "demo.main_hopes_goals_for_service.main_hopes_goals_for_service",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6a00dc2d",
+    "canonical_id": "demo.main_hopes_goals_for_service.date_of_injury",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ca9b40c1",
+    "canonical_id": "demo.main_hopes_goals_for_service.time_of_injury",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ad10db6a",
+    "canonical_id": "demo.main_hopes_goals_for_service.description_of_accident",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6109e130",
+    "canonical_id": "demo.main_hopes_goals_for_service.tbi_high_risk_indicators",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_541ef1e9",
+    "canonical_id": "demo.main_hopes_goals_for_service.affected_areas",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0e974640",
+    "canonical_id": "demo.main_hopes_goals_for_service.circumstances_were_emotionallypsychologically_tr",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ebe6fa6e",
+    "canonical_id": "demo.main_hopes_goals_for_service.collateral_information_about_the_injuryaccident",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b38d1adb",
+    "canonical_id": "demo.main_hopes_goals_for_service.posttraumatic_vomiting",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5b6aa1af",
+    "canonical_id": "demo.main_hopes_goals_for_service.loss_of_consciousness",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ad807d81",
+    "canonical_id": "demo.main_hopes_goals_for_service.posttraumatic_seizure",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8ce1e3c3",
+    "canonical_id": "demo.main_hopes_goals_for_service.feeling_betterworsesame_since_injury",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ad1b0053",
+    "canonical_id": "demo.main_hopes_goals_for_service.hx_of_prior_concussions_or_tbi",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_33ee66df",
+    "canonical_id": "demo.main_hopes_goals_for_service.anticoagulant_screen",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8d932b2d",
+    "canonical_id": "demo.main_hopes_goals_for_service.hx_of_mental_health_difficulties",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a76ea14b",
+    "canonical_id": "demo.main_hopes_goals_for_service.hx_of_migraine",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5aead854",
+    "canonical_id": "demo.symptom_severity_score.physical",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7d485b56",
+    "canonical_id": "demo.symptom_severity_score.vestibularocular_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d94415ae",
+    "canonical_id": "demo.symptom_severity_score.cognitive_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_59b51e6c",
+    "canonical_id": "demo.symptom_severity_score.post_24h_injury_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b9458289",
+    "canonical_id": "demo.physical.headache",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9f763d34",
+    "canonical_id": "demo.physical.neck_hurts",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_230e815e",
+    "canonical_id": "demo.physical.bright_lights",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7c16f1b9",
+    "canonical_id": "demo.physical.loud_noises",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3af30fd2",
+    "canonical_id": "demo.physical.physical",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2f5d3af3",
+    "canonical_id": "demo.vestibularocular.dizzy_or_could_be_sick",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a37fe93d",
+    "canonical_id": "demo.vestibularocular.close_my_eyes_feel_at_sea",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_632681d7",
+    "canonical_id": "demo.vestibularocular.trouble_with_vision",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6cfc0aa5",
+    "canonical_id": "demo.vestibularocular.clumsy",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ebc2921c",
+    "canonical_id": "demo.vestibularocular.vestibularocular_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c8aff1a6",
+    "canonical_id": "demo.cognitive.longer_to_think",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d0a1a796",
+    "canonical_id": "demo.cognitive.forget_things",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8dea2950",
+    "canonical_id": "demo.cognitive.confused_easily",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_09eaf650",
+    "canonical_id": "demo.cognitive.trouble_concentrating",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c61fea5e",
+    "canonical_id": "demo.cognitive.cognitive_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_53df211c",
+    "canonical_id": "demo.24h_post_injury.angry_or_irritated_easily",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2ee80810",
+    "canonical_id": "demo.24h_post_injury.dont_feel_right",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_04e08629",
+    "canonical_id": "demo.24h_post_injury.tired_during_the_day",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f49a8991",
+    "canonical_id": "demo.24h_post_injury.need_to_sleep_a_lot_more_or_find_it_hard_to_slee",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8640471a",
+    "canonical_id": "demo.24h_post_injury.post_24h_injury_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8bdfb438",
+    "canonical_id": "demo.24h_post_injury.overall_impact_of_injury_010_scale",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8029bea8",
+    "canonical_id": "demo.additional_information.spinefracture_injuries",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6c975db9",
+    "canonical_id": "demo.additional_information.able_to_complete_adls",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_eff936f3",
+    "canonical_id": "demo.additional_information.details",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2ed718aa",
+    "canonical_id": "demo.additional_information.recovery_hcp",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_bd7301c9",
+    "canonical_id": "demo.additional_information.method_of_hospital_arrival",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d58eaf2d",
+    "canonical_id": "demo.additional_information.working_at_time_of_incident",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9b81c382",
+    "canonical_id": "demo.additional_information.return_to_work",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9a25045a",
+    "canonical_id": "demo.additional_information.primary_caregiver",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4480d772",
+    "canonical_id": "demo.additional_information.policepolice_report",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0ce149be",
+    "canonical_id": "demo.additional_information.legal_action",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2dfbc006",
+    "canonical_id": "demo.additional_information.lawyer",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a55ceecf",
+    "canonical_id": "demo.depressive_concerns.depressive_concerns",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dfbaea50",
+    "canonical_id": "demo.adhd_concerns.adhd_concerns",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_594a86f7",
+    "canonical_id": "demo.anxietyocd_concerns.anxietyocd_concerns",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b2365b4c",
+    "canonical_id": "demo.oppositional_defiance_concerns.oppositional_defiance_concerns",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d11fe326",
+    "canonical_id": "demo.oppositional_defiance_concerns.other_concerns_not_listed",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_630a2482",
+    "canonical_id": "demo.school_history.current_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c4fae81b",
+    "canonical_id": "demo.school_history.grade",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2305d155",
+    "canonical_id": "demo.school_history.teacher",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_02796fb5",
+    "canonical_id": "demo.school_history.hx_of_repeating_a_grade",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_050be1e7",
+    "canonical_id": "demo.school_history.special_education_services",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_822d1813",
+    "canonical_id": "demo.school_history.special_ed_type",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ac81c29b",
+    "canonical_id": "demo.school_history.description_of_problems_at_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_18f9ee1d",
+    "canonical_id": "demo.school_history.previous_schoolpsychological_testing",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8b5da9a2",
+    "canonical_id": "demo.school_history.school_history",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ac291b4d",
+    "canonical_id": "demo.pregnancy_history.maternal_substance_use_in_pregnancy",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b1f4f978",
+    "canonical_id": "demo.pregnancy_history.delivery",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c1841ad7",
+    "canonical_id": "demo.pregnancy_history.gestational_age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_22619ce3",
+    "canonical_id": "demo.pregnancy_history.birth_weight",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f144dc3e",
+    "canonical_id": "demo.pregnancy_history.delivery_complications",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0578786e",
+    "canonical_id": "demo.developmental_history.walked_alone",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4a292b10",
+    "canonical_id": "demo.developmental_history.said_first_word",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f639798f",
+    "canonical_id": "demo.developmental_history.used_2word_phrases",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_15068321",
+    "canonical_id": "demo.developmental_history.understood_and_followed_simple_directions",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0efc616d",
+    "canonical_id": "demo.developmental_history.reasonably_well_toilet_trained",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_596dcbe5",
+    "canonical_id": "demo.developmental_history.crying_pattern_as_infant",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3177e1e5",
+    "canonical_id": "demo.adverse_experiences_in_the_first_2_years_of_life.adverse_experiences_in_the_first_2_years_of_life",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_99d7ad38",
+    "canonical_id": "demo.adverse_experiences_in_the_first_2_years_of_life.childs_doctor",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_1d4bbeb4",
+    "canonical_id": "demo.adverse_experiences_in_the_first_2_years_of_life.date_of_last_physical_exam",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8e6c3d6a",
+    "canonical_id": "demo.medical_history_screen.medical_history_screen",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_11bfbc47",
+    "canonical_id": "demo.medical_history_screen.vision_problem_details",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4c080c44",
+    "canonical_id": "demo.medical_history_screen.previous_mental_health_treatment",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f0bf90af",
+    "canonical_id": "demo.medical_history_screen.medications",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f73e552a",
+    "canonical_id": "demo.medical_history_screen.previous_medications_used_for_mental_health",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_98403493",
+    "canonical_id": "demo.allergies.allergies",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_1e72b579",
+    "canonical_id": "demo.allergies.medication_allergy_details",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3829cfd4",
+    "canonical_id": "demo.lifestyleenvironment_history.food_restrictions",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7c4c7b18",
+    "canonical_id": "demo.lifestyleenvironment_history.smokers_in_household",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_99cea6ab",
+    "canonical_id": "demo.lifestyleenvironment_history.hours_of_screen_time_per_day",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_379d0e4e",
+    "canonical_id": "demo.lifestyleenvironment_history.concern_that_someone_may_harm_the_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3f9ec29c",
+    "canonical_id": "demo.lifestyleenvironment_history.health_care_directive",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_df3dff8d",
+    "canonical_id": "demo.lifestyleenvironment_history.concern_about_substance_use",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dd51e239",
+    "canonical_id": "demo.lifestyleenvironment_history.lifestyleenvironment_history",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dfd85c5d",
+    "canonical_id": "demo.family_history.substance_use",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5d1b3296",
+    "canonical_id": "demo.family_history.family_history",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a25326db",
+    "canonical_id": "demo.family_history.family_history_of_mental_illness_or_addiction",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b56ca0",
+    "canonical_id": "demo.family_history.child_witness_to_domestic_violence",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ca4a5533",
+    "canonical_id": "demo.family_history.methods_of_discipline",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_04b9d1c5",
+    "canonical_id": "demo.life_stressors_trauma_history.history_of_verbal_abuse",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8916bf39",
+    "canonical_id": "demo.life_stressors_trauma_history.life_stressors_trauma_history",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_37740961",
+    "canonical_id": "demo.life_stressors_trauma_history.history_of_physical_abuse",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_40053bcc",
+    "canonical_id": "demo.life_stressors_trauma_history.history_of_sexual_abuse",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_35a264d7",
+    "canonical_id": "demo.life_stressors_trauma_history.other_stressorstraumas",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_66c32fc7",
+    "canonical_id": "demo.life_stressors_trauma_history.childs_strengths",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9968b736",
+    "canonical_id": "demo.life_stressors_trauma_history.additional_comments",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cbe5cfdf",
+    "canonical_id": "demo.field.field",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8c2d5736",
+    "canonical_id": "demo.field.geographic_region",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_70612cae",
+    "canonical_id": "demo.field.ethnicity",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_72d1bbb1",
+    "canonical_id": "demo.field.reason_for_referral",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_015881e0",
+    "canonical_id": "demo.field.diagnosis",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_31b0b815",
+    "canonical_id": "demo.funding_types.funding_types",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "general-screening",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f28b74aa",
+    "canonical_id": "demo.funding_types.referral_age_range",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_158fb94b",
+    "canonical_id": "demo.adult_behavioural_intake_form.person_completing_intakerelationship_to_client",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_86895902",
+    "canonical_id": "demo.client_demographics.clients_full_name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a00c15b2",
+    "canonical_id": "demo.client_demographics.preferred_pronouns",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cf2d734f",
+    "canonical_id": "demo.client_demographics.home_address",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_af4f553b",
+    "canonical_id": "demo.client_demographics.tel_cell",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c89cd9f5",
+    "canonical_id": "demo.client_demographics.legal_guardian_name_relationship_to_client",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ba013047",
+    "canonical_id": "demo.client_demographics.diagnosis",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_27fc124f",
+    "canonical_id": "demo.client_demographics.funding_supports",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9eab73fd",
+    "canonical_id": "demo.client_demographics.client_demographics",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_35a124a3",
+    "canonical_id": "demo.client_demographics.primary_support_person_1",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6a8e5762",
+    "canonical_id": "demo.client_demographics.primary_support_1_tel",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f226d711",
+    "canonical_id": "demo.client_demographics.relationship_to_client",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_1910ff62",
+    "canonical_id": "demo.client_demographics.email",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_608ec7d8",
+    "canonical_id": "demo.client_demographics.address",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c94a0ba9",
+    "canonical_id": "demo.client_demographics.primary_support_2",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2bfd0198",
+    "canonical_id": "demo.client_demographics.primary_support_2_tel",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5177c529",
+    "canonical_id": "demo.client_demographics.current_interventions",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4e55c20b",
+    "canonical_id": "demo.client_demographics.difficulties_adjusting_to_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f19ecdf2",
+    "canonical_id": "demo.client_demographics.special_accommodations_at_schoolwork",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8c2f7839",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.ability_to_engage_in_community_activities",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ae189ca1",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.interfering_behaviours_areas_of_concern",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_69eb544a",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.current_stressors_impacting_client",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c99823ce",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.cultural_educational_legal_issues",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "adult-behavioural-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7d293d93",
+    "canonical_id": "demo.main_hopes_goals_for_service.main_hopes_goals_for_service",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9f56fd04",
+    "canonical_id": "demo.field.person_completing_intake_relationship_to_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ab3906dd",
+    "canonical_id": "demo.field.gender",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_81857470",
+    "canonical_id": "demo.client_demographics.childs_full_name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cf2d734f",
+    "canonical_id": "demo.client_demographics.home_address",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_af4f553b",
+    "canonical_id": "demo.client_demographics.tel_cell",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c89cd9f5",
+    "canonical_id": "demo.client_demographics.legal_guardian_name_relationship_to_client",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7a02c55b",
+    "canonical_id": "demo.client_demographics.formal_asd_diagnosis",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b63ce7c1",
+    "canonical_id": "demo.oap_quesionnaire.oap_quesionnaire",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_93727852",
+    "canonical_id": "demo.oap_quesionnaire.primary_care_provider_1_relationship_to_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_67bd53ef",
+    "canonical_id": "demo.oap_quesionnaire.contact_info",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3f99faea",
+    "canonical_id": "demo.oap_quesionnaire.address",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8e9cde71",
+    "canonical_id": "demo.oap_quesionnaire.primary_care_provider_2_relationship_to_child",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_eec7b93e",
+    "canonical_id": "demo.oap_quesionnaire.oap_funding_total_remaining",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_efb6c061",
+    "canonical_id": "demo.oap_quesionnaire.cultural_educational_legal_issues",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c1c8e705",
+    "canonical_id": "demo.oap_quesionnaire.what_child_does_well",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_90be5cf6",
+    "canonical_id": "demo.oap_quesionnaire.childs_solitary_playengagement_preferences",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5e89321a",
+    "canonical_id": "demo.oap_quesionnaire.childs_playengagement_preferences_with_others",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_068d17a1",
+    "canonical_id": "demo.oap_quesionnaire.current_interventions",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f359d0a1",
+    "canonical_id": "demo.oap_quesionnaire.difficulties_adjusting_to_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5756abd7",
+    "canonical_id": "demo.oap_quesionnaire.special_education_supportsservices_at_school",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8c2f7839",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.ability_to_engage_in_community_activities",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b295426d",
+    "canonical_id": "demo.ability_to_engage_in_community_activities.areas_of_concern",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_95500613",
+    "canonical_id": "demo.communication.communication",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ad32bf86",
+    "canonical_id": "demo.relating_with_others.relating_with_others",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0d1e3b2f",
+    "canonical_id": "demo.imitation.imitation",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_54ccca74",
+    "canonical_id": "demo.response_to_sound_and_speech.response_to_sound_and_speech",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ae39ae49",
+    "canonical_id": "demo.visual_response.visual_response",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_be201300",
+    "canonical_id": "demo.other_senses.other_senses",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3bfd3424",
+    "canonical_id": "demo.emotional_responses.emotional_responses",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cfaf4df4",
+    "canonical_id": "demo.sensitivities.sensitivities",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "child-new-patient-history",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7d293d93",
+    "canonical_id": "demo.main_hopes_goals_for_service.main_hopes_goals_for_service",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d2d0e921",
+    "canonical_id": "demo.client_demographics.date_of_injury",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97fefee8",
+    "canonical_id": "demo.client_demographics.time_of_injury",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ab6fef30",
+    "canonical_id": "demo.client_demographics.description_of_accident",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d82368ce",
+    "canonical_id": "demo.client_demographics.tbi_high_risk_indicators",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ed71e38d",
+    "canonical_id": "demo.client_demographics.affected_areas",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8bef98ee",
+    "canonical_id": "demo.client_demographics.circumstances_were_emotionallypsychologically_tr",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_da5f02f6",
+    "canonical_id": "demo.client_demographics.collateral_information_about_the_injuryaccident",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8644e0d6",
+    "canonical_id": "demo.client_demographics.posttraumatic_vomiting",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_49e5fe09",
+    "canonical_id": "demo.client_demographics.loss_of_consciousness",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_33332d4f",
+    "canonical_id": "demo.client_demographics.posttraumatic_seizure",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_e20d173f",
+    "canonical_id": "demo.client_demographics.feeling_betterworsesame_since_injury",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_e0ab1a10",
+    "canonical_id": "demo.client_demographics.hx_of_prior_concussions_or_tbi",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_533c9a67",
+    "canonical_id": "demo.client_demographics.anticoagulant_screen",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_973afb23",
+    "canonical_id": "demo.client_demographics.hx_of_mental_health_difficulties",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "tbi-intake",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ae54eb49",
+    "canonical_id": "demo.client_demographics.hx_of_migraine",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9f3c29e1",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.attention_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0b1ae437",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.escape_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9609b677",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.nonsocial_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dbd25fd9",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.physical_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_73985154",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.tangible_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_1215d256",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_behaviour_to_get_attention",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_76538d48",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_to_escape_work_or_learn",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_9eee1db8",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_as_a_form_of_selfstimul",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dbcdb4d4",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_because_heshe_is_in_pai",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8ba733bb",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_behaviour_to_get_access_to_items_such",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_e42d21c4",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_because_heshe_likes_to_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4aa16a0f",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_when_asked_to_do_someth",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d5ea1b48",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_even_if_heshe_thinks_no",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_2d9c695c",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_more_frequently_when_he",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_15865c1b",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_when_you_take_something",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a02acb59",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_to_draw_attention_to_hi",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4f0363a9",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_when_heshe_does_not_wan",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8e6c3673",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_because_there_is_nothin",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a7bee41a",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_when_there_is_something",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_be55e0de",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_when_you_have_something",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0fe5e824",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_to_try_to_get_a_reactio",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_22992661",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_to_try_to_get_people_to",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_5d82fb90",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_in_a_highly_repetitive_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_bd6aae3c",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_because_heshe_is_physic",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b66b32f7",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.engages_in_the_behaviour_when_a_peer_has_somethi",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d70247ba",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.does_heshe_seem_to_be_saying_come_see_me_or_look",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_480de816",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.does_heshe_seem_to_enjoy_the_behavior_even_if_no",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_fd895e50",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.does_the_behavior_seem_to_indicate_to_you_that_h",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "qabf",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d74e6e9c",
+    "canonical_id": "demo.qabf_questions_about_behavioural_function.does_heshe_seem_to_be_saying_give_me_that_toy_fo",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f8d50b87",
+    "canonical_id": "demo.informantclient_relationship.relationship",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cb965675",
+    "canonical_id": "demo.informantclient_relationship.known_to_informant",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_32256fd9",
+    "canonical_id": "demo.informantclient_relationship.daily_interaction",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_181d36bf",
+    "canonical_id": "demo.informantclient_relationship.interaction_observed",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_c0ce724a",
+    "canonical_id": "demo.problem_behaviours.other",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dbefc340",
+    "canonical_id": "demo.problem_behaviours.details",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3de1df09",
+    "canonical_id": "demo.problem_behaviours.frequency",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7d81b95c",
+    "canonical_id": "demo.problem_behaviours.severity",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_61c69d9d",
+    "canonical_id": "demo.settingsactivities.details",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4150fa50",
+    "canonical_id": "demo.preproblem_behaviours_asd.post_problem_behaviours",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dfa2e9be",
+    "canonical_id": "demo.preproblem_behaviours_asd.current_treatments",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0f5b2acd",
+    "canonical_id": "demo.assessment.does_the_problem_behavior_occur_when_the_person_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_06970ae1",
+    "canonical_id": "demo.assessment.does_the_problem_behaviours_occur_when_the_perso",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_dd7ef30a",
+    "canonical_id": "demo.assessment.when_the_problem_behaviours_occurs_do_caregivers",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_437be3c7",
+    "canonical_id": "demo.assessment.does_the_person_usually_fuss_or_resist_when_she_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b28ef6d7",
+    "canonical_id": "demo.assessment.does_the_problem_behaviours_occur_when_the_perso_1",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ede41fd2",
+    "canonical_id": "demo.assessment.if_the_problem_behaviours_occurs_while_tasks_are",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_7c64a007",
+    "canonical_id": "demo.assessment.is_the_person_usually_well_behaved_when_she_is_n",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_3d15681d",
+    "canonical_id": "demo.assessment.does_the_problem_behaviours_occur_even_when_no_o",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_35fd0e6d",
+    "canonical_id": "demo.assessment.does_the_person_engage_in_the_problem_behaviours",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_bc44da6e",
+    "canonical_id": "demo.assessment.does_the_problem_behaviours_appear_to_be_a_form_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_36e5eaf7",
+    "canonical_id": "demo.assessment.is_the_problem_behaviours_less_likely_to_occur_w",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_ff7d4716",
+    "canonical_id": "demo.assessment.is_the_problem_behaviours_cyclical_occurring_for",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_e04784be",
+    "canonical_id": "demo.assessment.does_the_person_have_recurring_painful_condition",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_e5e030e0",
+    "canonical_id": "demo.assessment.is_the_problem_behaviours_more_likely_to_occur_w",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_738bdb1b",
+    "canonical_id": "demo.assessment.if_the_person_is_experiencing_physical_problems_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_176c20d2",
+    "canonical_id": "demo.assessment.fast_social_attentionpreferred_items_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8ddd3d76",
+    "canonical_id": "demo.assessment.fast_social_escape_from_tasksactivities_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f822e4c7",
+    "canonical_id": "demo.assessment.fast_automatic_sensory_stimulation_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "fast",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_a7ccddee",
+    "canonical_id": "demo.assessment.fast_automatic_pain_attenuation",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_545dbe56",
+    "canonical_id": "demo.field.patient_id",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6456239d",
+    "canonical_id": "demo.field.name",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_63068180",
+    "canonical_id": "demo.field.dob",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_97b38752",
+    "canonical_id": "demo.field.age",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0035803e",
+    "canonical_id": "demo.field.sex",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d54118b2",
+    "canonical_id": "demo.field.behaviour_description",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_fe5636d9",
+    "canonical_id": "demo.field.setting_description",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_434a8068",
+    "canonical_id": "demo.field.would_the_behaviour_occur_continuously_over_and_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cfbbcc74",
+    "canonical_id": "demo.field.does_the_behaviour_occur_following_a_request_to_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_db404f21",
+    "canonical_id": "demo.field.does_the_behaviour_seem_to_occur_in_response_to_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_6282cba4",
+    "canonical_id": "demo.field.does_the_behaviour_ever_occur_to_get_a_toy_food_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_cf61fb7f",
+    "canonical_id": "demo.field.would_the_behaviour_occur_repeatedly_in_the_same",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_bd3c19fa",
+    "canonical_id": "demo.field.does_the_behaviour_occur_when_any_request_is_mad",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b9d2a952",
+    "canonical_id": "demo.field.does_the_behaviour_occur_whenever_you_stop_atten",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_d8cad97f",
+    "canonical_id": "demo.field.does_the_behaviour_occur_when_you_take_away_a_fa",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0a609d06",
+    "canonical_id": "demo.field.does_it_appear_to_you_that_this_person_enjoys_pe",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_de52d691",
+    "canonical_id": "demo.field.does_this_person_seem_to_do_the_behaviour_to_ups",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_1a1daf08",
+    "canonical_id": "demo.field.does_this_person_seem_to_do_the_behaviour_to_ups_1",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_4cfb2e01",
+    "canonical_id": "demo.field.does_the_behaviour_stop_occurring_shortly_after_",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_70581bc9",
+    "canonical_id": "demo.field.when_the_behaviour_is_occurring_does_this_person",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_b1ab7b34",
+    "canonical_id": "demo.field.does_the_behaviour_stop_occurring_shortly_after__1",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_f0a3c2f1",
+    "canonical_id": "demo.field.does_this_person_seem_to_do_the_behaviour_to_get",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_41452dea",
+    "canonical_id": "demo.field.does_the_behaviour_seem_to_occur_when_this_perso",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_8ac4d6c9",
+    "canonical_id": "demo.field.mas_sensory_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_0ea56b36",
+    "canonical_id": "demo.field.mas_escape_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_77de075b",
+    "canonical_id": "demo.field.mas_attention_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  },
+  {
+    "intake_type_id": "mas",
+    "intake_type_version": "v1",
+    "stable_field_id": "sfid_db8ce60c",
+    "canonical_id": "demo.field.mas_tangible_score",
+    "mapping_method": "agent",
+    "approved_by": "seed-load"
+  }
+]
