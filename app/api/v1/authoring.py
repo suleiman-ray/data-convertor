@@ -9,6 +9,7 @@ from app.core.database import get_db
 from app.models.enums import ConceptStatus, ProposalStatus, ProposalType, TemplateStatus
 from app.schemas.authoring import (
     ConceptCreate, ConceptResponse, ConceptUpdate,
+    FieldInventoryItem,
     MappingCreate, MappingResponse,
     ProposalApprove, ProposalCreate, ProposalReject, ProposalResponse,
     TemplateApprove, TemplateCreate, TemplateResponse,
@@ -31,6 +32,7 @@ from app.services.authoring_templates import (
     approve_template, create_template, deprecate_template,
     get_template, list_templates,
 )
+from app.services.field_inventory import list_field_inventory
 from app.services.requeue import requeue_needs_review_submissions
 
 logger = logging.getLogger(__name__)
@@ -122,6 +124,42 @@ async def list_mappings_endpoint(
         offset=offset,
     )
     return [MappingResponse.model_validate(m) for m in mappings]
+
+
+@router.get(
+    "/field-inventory",
+    response_model=list[FieldInventoryItem],
+    summary="Distinct extracted field triples (mapping discovery)",
+)
+async def field_inventory_endpoint(
+    intake_type_id: str | None = Query(None),
+    intake_type_version: str | None = Query(None),
+    unmapped_only: bool = Query(
+        False,
+        description="If true, return only triples with no active field_to_canonical row",
+    ),
+    db: AsyncSession = Depends(get_db),
+) -> list[FieldInventoryItem]:
+    """
+    Return distinct **(intake_type_id, intake_type_version, stable_field_id)** values
+    from **OK** `extracted_fields` joined to submissions.
+
+    Use this for mapping agents and operators
+    """
+    rows = await list_field_inventory(
+        db,
+        intake_type_id=intake_type_id,
+        intake_type_version=intake_type_version,
+        unmapped_only=unmapped_only,
+    )
+    return [
+        FieldInventoryItem(
+            intake_type_id=a,
+            intake_type_version=b,
+            stable_field_id=c,
+        )
+        for a, b, c in rows
+    ]
 
 
 @router.get("/mappings/{mapping_id}", response_model=MappingResponse)

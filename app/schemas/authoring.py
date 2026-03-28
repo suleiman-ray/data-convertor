@@ -78,6 +78,13 @@ class MappingResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class FieldInventoryItem(BaseModel):
+    """One distinct (intake_type_id, intake_type_version, stable_field_id) from extraction."""
+
+    intake_type_id: str
+    intake_type_version: str
+    stable_field_id: str
+
 
 class TemplateCreate(BaseModel):
     intake_type_id: str = Field(..., min_length=1)

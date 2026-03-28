@@ -1,10 +1,20 @@
 """
-Load seed data (canonical concepts and field mappings) at deploy time.
+Load seed data (canonical concepts, field mappings, optional FHIR templates) at deploy time.
 
-Reads seed/concepts.json and seed/mappings.json from the project root.
-Idempotent: skips concepts that already exist (409), skips mappings that
-already exist (409). Exits 0 on full success; exits 1 if any required
-file is missing or if a mapping references a missing concept.
+Reads seed/concepts.json, seed/mappings.json, and optionally seed/templates.json from the
+project root.
+
+Idempotent: skips concepts that already exist (409), skips mappings that already exist
+(409), skips template seed rows when an APPROVED template already exists for the same
+(intake_type_id, intake_type_version).
+
+Exits 0 on full success; exits 1 if validation fails or if a mapping references a
+missing concept.
+
+templates.json format: JSON array of objects valid for TemplateCreate (intake_type_id,
+intake_type_version, template_json, placeholder_schema, template_version) plus optional
+approved_by (default seed-load). After create, each new template is approved so
+ingestion/build can run without a separate API approve step.
 
 Usage:
   python scripts/load_seed.py
@@ -34,12 +44,18 @@ logger = logging.getLogger("load_seed")
 
 async def main() -> int:
     from app.core.database import AsyncSessionLocal
-    from app.schemas.authoring import ConceptCreate, MappingCreate
+    from app.schemas.authoring import ConceptCreate, MappingCreate, TemplateCreate
     from app.services.authoring_concepts import ConceptAlreadyExists, create_concept
     from app.services.authoring_mappings import (
         MappingConflict,
         MappingReferenceError,
         create_mapping,
+    )
+    from app.services.authoring_templates import (
+        approve_template,
+        create_template,
+        get_approved_template,
+        TemplateConflict,
     )
 
     concepts_path = os.path.join(SEED_DIR, "concepts.json")
@@ -65,10 +81,26 @@ async def main() -> int:
             logger.error("mappings.json must be a JSON array")
             return 1
 
+    templates_path = os.path.join(SEED_DIR, "templates.json")
+    if not os.path.isfile(templates_path):
+        logger.info(
+            "Optional seed file not present: %s (skipping FHIR template seed)",
+            templates_path,
+        )
+        templates_data = []
+    else:
+        with open(templates_path, encoding="utf-8") as f:
+            templates_data = json.load(f)
+        if not isinstance(templates_data, list):
+            logger.error("templates.json must be a JSON array")
+            return 1
+
     concepts_created = 0
     concepts_skipped = 0
     mappings_created = 0
     mappings_skipped = 0
+    templates_created = 0
+    templates_skipped = 0
     errors = []
 
     async with AsyncSessionLocal() as db:
@@ -119,12 +151,56 @@ async def main() -> int:
             except Exception as e:
                 errors.append(f"mapping {data.stable_field_id}: {e}")
 
+        for i, raw in enumerate(templates_data):
+            if not isinstance(raw, dict):
+                errors.append(f"templates[{i}]: must be a JSON object")
+                continue
+            approved_by = raw.get("approved_by") or "seed-load"
+            payload = {k: v for k, v in raw.items() if k != "approved_by"}
+            try:
+                data = TemplateCreate.model_validate(payload)
+            except Exception as e:
+                errors.append(f"templates[{i}]: {e}")
+                continue
+            try:
+                existing = await get_approved_template(
+                    db, data.intake_type_id, data.intake_type_version
+                )
+                if existing is not None:
+                    templates_skipped += 1
+                    logger.debug(
+                        "Approved template already exists for %s/%s, skipping",
+                        data.intake_type_id,
+                        data.intake_type_version,
+                    )
+                    continue
+                created = await create_template(db, data)
+                await approve_template(db, created.template_id, approved_by)
+                templates_created += 1
+                logger.info(
+                    "Created and approved template for %s/%s template_id=%s",
+                    data.intake_type_id,
+                    data.intake_type_version,
+                    created.template_id,
+                )
+            except TemplateConflict as e:
+                errors.append(
+                    f"template {data.intake_type_id}/{data.intake_type_version}: {e}"
+                )
+            except Exception as e:
+                errors.append(
+                    f"template {data.intake_type_id}/{data.intake_type_version}: {e}"
+                )
+
     logger.info(
-        "Seed load complete: concepts created=%s skipped=%s; mappings created=%s skipped=%s",
+        "Seed load complete: concepts created=%s skipped=%s; mappings created=%s skipped=%s; "
+        "templates created=%s skipped=%s",
         concepts_created,
         concepts_skipped,
         mappings_created,
         mappings_skipped,
+        templates_created,
+        templates_skipped,
     )
     if errors:
         for err in errors:
