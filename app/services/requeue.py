@@ -1,11 +1,10 @@
-import asyncio
 import logging
 
 from sqlalchemy import select
 
 from app.core.config import settings
 from app.core.database import AsyncSessionLocal
-from app.core.sqs import send_message
+from app.core.sqs import send_message_async_with_retry
 from app.models.enums import SubmissionStatus, UnmappedStatus
 from app.models.intake_submission import IntakeSubmission
 from app.models.unmapped_field import UnmappedField
@@ -22,8 +21,9 @@ async def requeue_needs_review_submissions(
     After a new mapping is approved, unblock all NEEDS_REVIEW submissions
     that were blocked on that stable_field_id.
 
-    Commits + publishes per submission so a SQS failure on submission N
-    does not leave N+1 … published without a committed PROCESSING status.
+    Commits **before** publish per submission (aligned with FHIR builder). SQS
+    send uses retries; if all attempts fail after commit, the row is PROCESSING
+    without a queue message — operator may re-call the requeue API.
 
     Returns the count of submissions re-queued.
     """
@@ -76,14 +76,14 @@ async def requeue_needs_review_submissions(
 
             sub.status = SubmissionStatus.PROCESSING
 
-            # Publish BEFORE commit — if SQS raises, the DB rolls back and
-            # the submission stays NEEDS_REVIEW so this call can be retried.
-            await asyncio.to_thread(
-                send_message,
+            # Commit FIRST, then publish (aligned with fhir_builder_worker / ingestion).
+            # Transient SQS failures are retried via send_message_async_with_retry; if all
+            # attempts fail, DB already shows PROCESSING — operator may re-run requeue API.
+            await db.commit()
+            await send_message_async_with_retry(
                 settings.sqs_resolve_normalize_queue_url,
                 {"submission_id": str(sid)},
             )
-            await db.commit()
             count += 1
             logger.info("requeue: re-enqueued submission %s after mapping created", sid)
 

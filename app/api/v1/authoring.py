@@ -1,7 +1,7 @@
 import uuid
 import logging
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -200,9 +200,11 @@ async def requeue_mapping_endpoint(
 async def deactivate_mapping_endpoint(
     mapping_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
+    x_actor_id: str | None = Header(None, alias="X-Actor-Id"),
 ) -> MappingResponse:
+    actor_id = (x_actor_id or "").strip() or "api"
     try:
-        mapping = await deactivate_mapping(db, mapping_id)
+        mapping = await deactivate_mapping(db, mapping_id, actor_id=actor_id)
         return MappingResponse.model_validate(mapping)
     except MappingNotFound as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc))
@@ -271,9 +273,13 @@ async def approve_template_endpoint(
 async def deprecate_template_endpoint(
     template_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
+    x_actor_id: str | None = Header(None, alias="X-Actor-Id"),
 ) -> TemplateResponse:
+    actor_id = (x_actor_id or "").strip() or "api"
     try:
-        return TemplateResponse.model_validate(await deprecate_template(db, template_id))
+        return TemplateResponse.model_validate(
+            await deprecate_template(db, template_id, actor_id=actor_id)
+        )
     except TemplateNotFound as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc))
     except TemplateConflict as exc:

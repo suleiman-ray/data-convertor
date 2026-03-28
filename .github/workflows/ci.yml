@@ -12,6 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Ensure .env is not tracked in git
+        run: |
+          if [ -n "$(git ls-files .env)" ]; then
+            echo "::error::.env must not be committed — remove from index and rotate any exposed secrets"
+            exit 1
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

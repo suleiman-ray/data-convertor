@@ -42,6 +42,9 @@ class Settings(BaseSettings):
     sqs_wait_time_seconds: int = 20
     sqs_max_messages: int = 1
 
+    # Workers: optional TCP health (HTTP 200 on any request) for orchestrator probes
+    worker_health_port: int | None = None
+
     # HealthLake
     healthlake_datastore_endpoint: str | None = None
 

@@ -42,4 +42,5 @@ class CanonicalValue(Base):
     __table_args__ = (
         Index("ix_canonical_values_submission", "submission_id"),
         Index("ix_canonical_values_patient", "patient_id"),
+        Index("ix_canonical_values_canonical_id", "canonical_id"),
     )

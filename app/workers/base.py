@@ -39,6 +39,28 @@ class SQSWorker(abc.ABC):
     def __init__(self) -> None:
         self._running = False
 
+    async def _serve_health(self, port: int) -> None:
+        async def handle(
+            reader: asyncio.StreamReader, writer: asyncio.StreamWriter
+        ) -> None:
+            try:
+                await reader.read(65536)
+                writer.write(
+                    b"HTTP/1.1 200 OK\r\n"
+                    b"Content-Type: text/plain\r\n"
+                    b"Connection: close\r\n"
+                    b"Content-Length: 2\r\n\r\n"
+                    b"ok"
+                )
+                await writer.drain()
+            finally:
+                writer.close()
+                await writer.wait_closed()
+
+        server = await asyncio.start_server(handle, "0.0.0.0", port)
+        async with server:
+            await server.serve_forever()
+
     @abc.abstractmethod
     async def handle(self, body: dict, receipt_handle: str) -> None:
         """
@@ -60,47 +82,72 @@ class SQSWorker(abc.ABC):
         self._register_signals()
         logger.info("[%s] Worker started, polling %s", self.worker_name, self.queue_url)
 
-        while self._running:
-            try:
-                messages = await asyncio.to_thread(
-                    receive_messages, self.queue_url, settings.sqs_max_messages
-                )
-            except Exception:
-                logger.exception("[%s] Error receiving messages — retrying in 5s", self.worker_name)
-                await asyncio.sleep(5)
-                continue
+        health_task: asyncio.Task[None] | None = None
+        if settings.worker_health_port is not None:
+            health_task = asyncio.create_task(
+                self._serve_health(settings.worker_health_port),
+                name=f"{self.worker_name}-health",
+            )
+            logger.info(
+                "[%s] Health probe listening on 0.0.0.0:%s",
+                self.worker_name,
+                settings.worker_health_port,
+            )
 
-            for msg in messages:
-                receipt_handle = msg["ReceiptHandle"]
-                receive_count = int(msg.get("Attributes", {}).get("ApproximateReceiveCount", 1))
-
+        try:
+            while self._running:
                 try:
-                    body = json.loads(msg["Body"])
-                except json.JSONDecodeError:
-                    logger.error(
-                        "[%s] Malformed message body (receive_count=%d) — deleting to avoid loop",
-                        self.worker_name, receive_count,
+                    messages = await asyncio.to_thread(
+                        receive_messages, self.queue_url, settings.sqs_max_messages
                     )
-                    await asyncio.to_thread(delete_message, self.queue_url, receipt_handle)
-                    continue
-
-                logger.info(
-                    "[%s] Processing message (receive_count=%d) body_keys=%s",
-                    self.worker_name, receive_count, list(body.keys()),
-                )
-
-                try:
-                    await self.handle(body, receipt_handle)
-                    # Ack: delete only after successful handle (which includes db.commit)
-                    await asyncio.to_thread(delete_message, self.queue_url, receipt_handle)
-                    logger.info("[%s] Message processed and acknowledged", self.worker_name)
                 except Exception:
                     logger.exception(
-                        "[%s] handle() raised — message will be re-delivered (receive_count=%d)",
-                        self.worker_name, receive_count,
+                        "[%s] Error receiving messages — retrying in 5s", self.worker_name
                     )
-                    # Do NOT delete — SQS re-delivers after visibility timeout.
-                    # After maxReceiveCount retries, SQS moves it to the DLQ.
+                    await asyncio.sleep(5)
+                    continue
+
+                for msg in messages:
+                    receipt_handle = msg["ReceiptHandle"]
+                    receive_count = int(
+                        msg.get("Attributes", {}).get("ApproximateReceiveCount", 1)
+                    )
+
+                    try:
+                        body = json.loads(msg["Body"])
+                    except json.JSONDecodeError:
+                        logger.error(
+                            "[%s] Malformed message body (receive_count=%d) — deleting to avoid loop",
+                            self.worker_name, receive_count,
+                        )
+                        await asyncio.to_thread(delete_message, self.queue_url, receipt_handle)
+                        continue
+
+                    logger.info(
+                        "[%s] Processing message (receive_count=%d) body_keys=%s",
+                        self.worker_name, receive_count, list(body.keys()),
+                    )
+
+                    try:
+                        await self.handle(body, receipt_handle)
+                        # Ack: delete only after successful handle (which includes db.commit)
+                        await asyncio.to_thread(delete_message, self.queue_url, receipt_handle)
+                        logger.info("[%s] Message processed and acknowledged", self.worker_name)
+                    except Exception:
+                        logger.exception(
+                            "[%s] handle() raised — message will be re-delivered (receive_count=%d)",
+                            self.worker_name, receive_count,
+                        )
+                        # Do NOT delete — SQS re-delivers after visibility timeout.
+                        # After maxReceiveCount retries, SQS moves it to the DLQ.
+
+        finally:
+            if health_task is not None:
+                health_task.cancel()
+                try:
+                    await health_task
+                except asyncio.CancelledError:
+                    pass
 
         logger.info("[%s] Worker stopped", self.worker_name)
 

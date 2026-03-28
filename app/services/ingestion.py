@@ -7,7 +7,7 @@ Responsibilities:
      least one FhirTemplate row exists for it (any status). This replaces the
      former hardcoded KNOWN_INTAKE_TYPES set; new intake types are onboarded by
      creating a template via POST /authoring/templates without any code change.
-  3. Serialize payload → bytes, compute SHA-256, upload to S3.
+  3. Serialize payload → bytes, compute SHA-256, upload to S3 (via asyncio.to_thread — non-blocking).
   4. Write intake_submissions row (RECEIVED → PROCESSING) and commit.
   5. Publish to extraction queue *after* commit so the worker never receives
      a message for a row that doesn't exist yet.
@@ -23,9 +23,9 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core import sqs as sqs_client
 from app.core.config import settings
 from app.core.s3 import upload_raw_artifact
+from app.core.sqs import send_message_async_with_retry
 from app.models.canonical_value import CanonicalValue
 from app.models.enums import CanonicalValueState, ContentFormat, SubmissionStatus
 from app.models.fhir_template import FhirTemplate
@@ -79,10 +79,11 @@ async def ingest(db: AsyncSession, data: SubmissionCreate) -> IntakeSubmission:
     raw_bytes = json.dumps(data.payload, ensure_ascii=False).encode("utf-8")
     submission_id = uuid.uuid4()
 
-    raw_uri, raw_sha256 = upload_raw_artifact(
-        submission_id=str(submission_id),
-        content=raw_bytes,
-        content_type="application/json",
+    raw_uri, raw_sha256 = await asyncio.to_thread(
+        upload_raw_artifact,
+        str(submission_id),
+        raw_bytes,
+        "application/json",
     )
     logger.info("Raw artifact uploaded uri=%s sha256=%s", raw_uri, raw_sha256)
 
@@ -130,7 +131,7 @@ async def ingest(db: AsyncSession, data: SubmissionCreate) -> IntakeSubmission:
         "intake_type_version": submission.intake_type_version,
         "content_format": submission.content_format.value,
     }
-    await asyncio.to_thread(sqs_client.send_message, settings.sqs_extraction_queue_url, message)
+    await send_message_async_with_retry(settings.sqs_extraction_queue_url, message)
     logger.info(
         "Submission queued submission_id=%s queue=%s",
         submission.submission_id, settings.sqs_extraction_queue_url,
@@ -187,8 +188,7 @@ async def rebuild_submission(db: AsyncSession, submission_id: uuid.UUID) -> Inta
     await db.commit()
     await db.refresh(submission)
 
-    await asyncio.to_thread(
-        sqs_client.send_message,
+    await send_message_async_with_retry(
         settings.sqs_fhir_queue_url,
         {"submission_id": str(submission_id)},
     )

@@ -126,7 +126,9 @@ async def approve_template(
     return template
 
 
-async def deprecate_template(db: AsyncSession, template_id: uuid.UUID) -> FhirTemplate:
+async def deprecate_template(
+    db: AsyncSession, template_id: uuid.UUID, *, actor_id: str = "api"
+) -> FhirTemplate:
     template = await get_template(db, template_id)
     if template.status == TemplateStatus.DEPRECATED:
         raise TemplateConflict(f"Template '{template_id}' is already deprecated")
@@ -135,7 +137,7 @@ async def deprecate_template(db: AsyncSession, template_id: uuid.UUID) -> FhirTe
     template.status = TemplateStatus.DEPRECATED
     audit_write(
         db,
-        actor_id="api",
+        actor_id=actor_id,
         action="template.deprecated",
         entity_type="fhir_template",
         entity_id=str(template_id),

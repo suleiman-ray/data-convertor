@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from fhir.resources.bundle import Bundle  # type: ignore[import]
+from pydantic import ValidationError
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -275,12 +276,24 @@ def _validate_bundle(bundle_dict: dict) -> list[str]:
     """
     Validate a FHIR R4 bundle with fhir.resources.
     Returns a list of error strings (empty list means valid).
+
+    ``Bundle.model_validate`` normally raises :class:`pydantic.ValidationError`
+    for schema violations. We also catch any other exception so a rare
+    ``TypeError`` / internal error still becomes a validation failure record
+    instead of crashing the worker loop.
     """
     try:
         Bundle.model_validate(bundle_dict)
         return []
-    except Exception as exc:  # noqa: BLE001
+    except ValidationError as exc:
         logger.warning("fhir-builder: FHIR R4 validation failed: %s", exc)
+        return [str(exc)]
+    except Exception as exc:
+        logger.warning(
+            "fhir-builder: unexpected error during bundle validation (non-ValidationError): %s",
+            exc,
+            exc_info=True,
+        )
         return [str(exc)]
 
 

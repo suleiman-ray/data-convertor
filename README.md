@@ -18,6 +18,10 @@ docker compose up --build
 
 API defaults to `http://localhost:8000`. Run DB migrations and seed via the compose services (`migrate`, `seed`) before workers process traffic.
 
+## Database sessions
+
+FastAPI’s `get_db()` dependency **does not auto-commit**. Successful writes require an explicit `await db.commit()` in the route or service layer. On exceptions, the session rolls back. See `app/core/database.py`.
+
 ## Seed data (deploy-time)
 
 JSON under **`seed/`** is loaded by **`scripts/load_seed.py`** after migrations. Shapes match **`app/schemas/authoring.py`** (`ConceptCreate`, `MappingCreate`, `TemplateCreate`). Order: concepts → mappings → optional templates. CI runs **`scripts/validate_seed.py`** (see **`app/services/seed_validation.py`**).

@@ -26,6 +26,14 @@ AsyncSessionLocal = async_sessionmaker(
 
 
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
+    """
+    FastAPI dependency: one SQLAlchemy async session per request.
+
+    **Commit contract:** This generator does **not** call ``commit()`` on success.
+    Every route or service that performs writes must ``await db.commit()`` (or
+    delegate to a service that does). If a handler exits without committing,
+    changes are rolled back when the session closes. See README — Database sessions.
+    """
     async with AsyncSessionLocal() as session:
         try:
             yield session

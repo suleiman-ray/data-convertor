@@ -20,6 +20,13 @@ from app.workers.base import SQSWorker
 logger = logging.getLogger(__name__)
 
 
+def _normalization_failure_is_terminal(failed_count: int, confirmed_count: int) -> bool:
+    """True only when there are failures and nothing buildable (FHIR uses CONFIRMED only)."""
+    if failed_count == 0:
+        return False
+    return confirmed_count == 0
+
+
 class ResolveNormalizeWorker(SQSWorker):
     queue_url = settings.sqs_resolve_normalize_queue_url
     worker_name = "resolve-normalize"
@@ -87,8 +94,21 @@ async def _process(db: AsyncSession, submission_id: uuid.UUID) -> None:
 
     failed_count = await _normalization_failed_count(db, submission_id)
     if failed_count:
-        await _fail(db, submission, f"{failed_count} field(s) failed normalization")
-        return
+        confirmed_count = await _normalization_confirmed_count(db, submission_id)
+        if _normalization_failure_is_terminal(failed_count, confirmed_count):
+            await _fail(
+                db,
+                submission,
+                f"{failed_count} field(s) failed normalization (no successful values)",
+            )
+            return
+        logger.warning(
+            "resolve-normalize: submission %s has %d normalization failure(s) but %d "
+            "confirmed value(s) — continuing to FHIR build (partial bundle)",
+            submission_id,
+            failed_count,
+            confirmed_count,
+        )
 
     await _advance_to_building_fhir(db, submission)
 
@@ -222,6 +242,17 @@ async def _normalization_failed_count(
         select(func.count()).where(
             CanonicalValue.submission_id == submission_id,
             CanonicalValue.state == CanonicalValueState.NORMALIZATION_FAILED,
+        )
+    ) or 0
+
+
+async def _normalization_confirmed_count(
+    db: AsyncSession, submission_id: uuid.UUID
+) -> int:
+    return await db.scalar(
+        select(func.count()).where(
+            CanonicalValue.submission_id == submission_id,
+            CanonicalValue.state == CanonicalValueState.CONFIRMED,
         )
     ) or 0
 

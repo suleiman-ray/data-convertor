@@ -158,7 +158,9 @@ async def list_mappings(
     return list(result.all())
 
 
-async def deactivate_mapping(db: AsyncSession, mapping_id: uuid.UUID) -> FieldToCanonical:
+async def deactivate_mapping(
+    db: AsyncSession, mapping_id: uuid.UUID, *, actor_id: str = "api"
+) -> FieldToCanonical:
     mapping = await get_mapping(db, mapping_id)
     if not mapping.active:
         raise MappingConflict(f"Mapping '{mapping_id}' is already inactive")
@@ -167,7 +169,7 @@ async def deactivate_mapping(db: AsyncSession, mapping_id: uuid.UUID) -> FieldTo
     mapping.deactivated_at = datetime.now(timezone.utc)
     audit_write(
         db,
-        actor_id="api",
+        actor_id=actor_id,
         action="mapping.deactivated",
         entity_type="field_to_canonical",
         entity_id=str(mapping_id),
