@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Validate seed/*.json against authoring Pydantic models and optional template
-placeholder ↔ concepts/mappings contract (see app.services.seed_validation).
+placeholder ↔ concepts/mappings contract (implementation: **app.services.seed_validation**).
 
 Exit 0 if valid; exit 1 with errors on stderr.
 

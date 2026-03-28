@@ -20,6 +20,9 @@ Usage:
   python scripts/load_seed.py
 
 Expects DATABASE_URL in the environment (same as the API).
+
+Payload shapes match **ConceptCreate**, **MappingCreate**, and **TemplateCreate** in
+**app/schemas/authoring.py**. For CI validation rules see **app/services/seed_validation.py**.
 """
 
 import asyncio
