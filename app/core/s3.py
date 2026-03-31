@@ -23,6 +23,7 @@ def upload_raw_artifact(submission_id: str, content: bytes, content_type: str = 
         Body=content,
         ContentType=content_type,
         Metadata={"sha256": sha256},
+        ServerSideEncryption="AES256",
     )
     uri = f"s3://{settings.s3_bucket_raw}/{key}"
     return uri, sha256
@@ -46,6 +47,7 @@ def upload_fhir_bundle(bundle_id: str, bundle_json: str) -> tuple[str, str]:
         Body=content,
         ContentType="application/fhir+json",
         Metadata={"sha256": sha256},
+        ServerSideEncryption="AES256",
     )
     uri = f"s3://{settings.s3_bucket_bundles}/{key}"
     return uri, sha256

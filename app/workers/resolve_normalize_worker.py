@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
 from app.core.database import AsyncSessionLocal
-from app.core.sqs import send_message
+from app.core.sqs import send_message_async_with_retry
 from app.models.canonical_value import CanonicalValue
 from app.models.enums import CanonicalValueState, SubmissionStatus, UnmappedStatus
 from app.models.extracted_field import ExtractedField
@@ -261,17 +261,17 @@ async def _advance_to_building_fhir(
     db: AsyncSession, submission: IntakeSubmission
 ) -> None:
     """
-    Publish to fhir-queue FIRST, then commit status change.
+    Commit BUILDING_FHIR status first, then publish to fhir-queue.
 
-    If publish raises, the exception propagates out of the async with block,
-    the DB transaction rolls back, and the SQS message for this submission
-    is re-delivered after the visibility timeout.
+    Ordering rationale (aligned with fhir_builder_worker and ingestion):
+      commit-first, publish-second: if commit fails the submission stays
+      PROCESSING and the resolve-normalize message is re-delivered for a
+      clean retry.  If publish fails after a successful commit the row exists
+      in DB as BUILDING_FHIR; send_message_async_with_retry exhausts its
+      attempts, raises, and SQS re-delivers the resolve-normalize message —
+      which will skip it (status != PROCESSING) until an operator or a future
+      sweep re-publishes to fhir-queue.
     """
-    await asyncio.to_thread(
-        send_message,
-        settings.sqs_fhir_queue_url,
-        {"submission_id": str(submission.submission_id)},
-    )
     submission.status = SubmissionStatus.BUILDING_FHIR
     audit_write(
         db,
@@ -282,6 +282,10 @@ async def _advance_to_building_fhir(
         after_state={"status": SubmissionStatus.BUILDING_FHIR.value},
     )
     await db.commit()
+    await send_message_async_with_retry(
+        settings.sqs_fhir_queue_url,
+        {"submission_id": str(submission.submission_id)},
+    )
     logger.info(
         "resolve-normalize: submission %s → BUILDING_FHIR (published to fhir-queue)",
         submission.submission_id,

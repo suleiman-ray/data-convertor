@@ -15,7 +15,7 @@ from app.core.config import settings
 from app.core.constants import FHIR_VERSION
 from app.core.database import AsyncSessionLocal
 from app.core.s3 import upload_fhir_bundle
-from app.core.sqs import send_message
+from app.core.sqs import send_message_async_with_retry
 from app.models.canonical_concept import CanonicalConcept
 from app.models.canonical_value import CanonicalValue
 from app.models.enums import (
@@ -34,6 +34,7 @@ from app.workers.base import SQSWorker
 logger = logging.getLogger(__name__)
 
 _PLACEHOLDER_RE = re.compile(r"\{\{canonical:([^}]+)\}\}")
+_EXACT_PLACEHOLDER_RE = re.compile(r"^\{\{canonical:([^}]+)\}\}$")
 
 # Value types whose normalizer produces {"value": <scalar>}.
 # These are emitted as bare scalars in the FHIR template rather than objects.
@@ -153,8 +154,7 @@ async def _process(db: AsyncSession, submission_id: uuid.UUID) -> None:
     )
     await db.commit()
 
-    await asyncio.to_thread(
-        send_message,
+    await send_message_async_with_retry(
         settings.sqs_delivery_queue_url,
         {"submission_id": str(submission_id), "bundle_id": str(bundle_id)},
     )
@@ -241,35 +241,60 @@ def _build_value_map(
 
 def _fill_placeholders(template_json: dict, value_map: dict[str, Any]) -> dict:
     """
-    Fill every {{canonical:<id>}} occurrence in template_json.
+    Fill every {{canonical:<id>}} placeholder in template_json by recursively
+    walking the structure rather than round-tripping through a JSON string.
 
-    Strategy (operates on the serialized JSON string):
-      1. "{{canonical:<id>}}" (with surrounding quotes) → replaced with the
-         JSON-encoded value, preserving the correct JSON type.
-      2. {{canonical:<id>}} embedded inside a larger string → replaced with
-         the str() representation.
+    Two substitution modes:
+      1. A string value that is *exactly* a placeholder → replaced with the typed
+         Python value, preserving the correct FHIR type (bool, float, dict, …).
+      2. A placeholder *embedded* inside a longer string → replaced with str(value).
 
-    Raises ValueError if any placeholder remains unfilled.
+    Raises ValueError if any placeholder remains after the walk (i.e. no canonical
+    value was provided for it).
     """
-    template_str = json.dumps(template_json)
-
-    for canonical_id, value in value_map.items():
-        quoted = f'"{{{{canonical:{canonical_id}}}}}"'
-        if quoted in template_str:
-            template_str = template_str.replace(quoted, json.dumps(value))
-
-        inline = f"{{{{canonical:{canonical_id}}}}}"
-        if inline in template_str:
-            str_val = str(value) if not isinstance(value, str) else value
-            template_str = template_str.replace(inline, str_val)
-
-    remaining = _PLACEHOLDER_RE.findall(template_str)
+    result = _walk(template_json, value_map)
+    remaining = _collect_placeholders(result)
     if remaining:
         raise ValueError(
             f"Unfilled template placeholders — no canonical values for: {set(remaining)}"
         )
+    return result  # type: ignore[return-value]
 
-    return json.loads(template_str)
+
+def _walk(node: Any, value_map: dict[str, Any]) -> Any:
+    if isinstance(node, dict):
+        return {k: _walk(v, value_map) for k, v in node.items()}
+    if isinstance(node, list):
+        return [_walk(item, value_map) for item in node]
+    if isinstance(node, str):
+        # Exact match: the whole string is a placeholder → return the typed value.
+        m = _EXACT_PLACEHOLDER_RE.match(node)
+        if m:
+            canonical_id = m.group(1)
+            # If missing from value_map, leave intact so _collect_placeholders reports it.
+            return value_map[canonical_id] if canonical_id in value_map else node
+
+        # Partial match: one or more placeholders embedded in a larger string.
+        def _sub(match: re.Match) -> str:
+            cid = match.group(1)
+            if cid not in value_map:
+                return match.group(0)  # leave intact for _collect_placeholders
+            val = value_map[cid]
+            return val if isinstance(val, str) else str(val)
+
+        return _PLACEHOLDER_RE.sub(_sub, node)
+    return node
+
+
+def _collect_placeholders(node: Any) -> list[str]:
+    """Return all remaining {{canonical:<id>}} placeholders found in node."""
+    if isinstance(node, dict):
+        return [cid for v in node.values() for cid in _collect_placeholders(v)]
+    if isinstance(node, list):
+        return [cid for item in node for cid in _collect_placeholders(item)]
+    if isinstance(node, str):
+        return _PLACEHOLDER_RE.findall(node)
+    return []
 
 
 def _validate_bundle(bundle_dict: dict) -> list[str]:

@@ -118,6 +118,12 @@ async def ingest(db: AsyncSession, data: SubmissionCreate) -> IntakeSubmission:
                 IntakeSubmission.idempotency_key == data.idempotency_key
             )
         )
+        if existing is None:
+            # Both concurrent writers lost the race (e.g. the winner rolled back).
+            # Treat as a retriable conflict rather than crashing with NoneType.
+            raise IngestionError(
+                "Concurrent submission conflict — please retry."
+            )
         raise DuplicateSubmission(existing)
     await db.refresh(submission)
 
@@ -144,7 +150,7 @@ class RebuildError(Exception):
     """Raised when a rebuild is not permitted in the current submission state."""
 
 
-async def rebuild_submission(db: AsyncSession, submission_id: uuid.UUID) -> IntakeSubmission:
+async def rebuild_submission(db: AsyncSession, submission_id: uuid.UUID) -> IntakeSubmission | None:
     """
     Reset a FAILED submission back to BUILDING_FHIR and re-publish to fhir-queue.
 
@@ -205,6 +211,9 @@ async def get_submission(db: AsyncSession, submission_id: uuid.UUID) -> IntakeSu
     )
 
 
+_LIST_SUBMISSIONS_MAX_LIMIT = 500
+
+
 async def list_submissions(
     db: AsyncSession,
     status: SubmissionStatus | None = None,
@@ -213,6 +222,7 @@ async def list_submissions(
     limit: int = 100,
     offset: int = 0,
 ) -> list[IntakeSubmission]:
+    limit = min(limit, _LIST_SUBMISSIONS_MAX_LIMIT)
     q = select(IntakeSubmission)
     if status is not None:
         q = q.where(IntakeSubmission.status == status)

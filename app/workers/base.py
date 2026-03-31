@@ -57,7 +57,11 @@ class SQSWorker(abc.ABC):
                 writer.close()
                 await writer.wait_closed()
 
-        server = await asyncio.start_server(handle, "0.0.0.0", port)
+        server = await asyncio.start_server(
+            handle,
+            "0.0.0.0",
+            port,
+        )
         async with server:
             await server.serve_forever()
 

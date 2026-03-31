@@ -1,4 +1,7 @@
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_WEAK_SECRET_KEYS = {"fake-key", "change-me-in-production", "secret", ""}
 
 
 class Settings(BaseSettings):
@@ -6,7 +9,7 @@ class Settings(BaseSettings):
 
     # Application
     app_env: str = "development"
-    app_debug: bool = True
+    app_debug: bool = False
     secret_key: str = "fake-key"
 
     # Database
@@ -47,6 +50,30 @@ class Settings(BaseSettings):
 
     # HealthLake
     healthlake_datastore_endpoint: str | None = None
+
+    # CORS — set to explicit origins in production, e.g. '["https://app.example.com"]'
+    cors_allowed_origins: list[str] = ["*"]
+
+    @model_validator(mode="after")
+    def _validate_production_settings(self) -> "Settings":
+        if self.app_env == "development":
+            return self
+        if self.secret_key in _WEAK_SECRET_KEYS or len(self.secret_key) < 32:
+            raise ValueError(
+                "SECRET_KEY must be a cryptographically strong value of at least 32 characters "
+                "in non-development environments."
+            )
+        if (
+            self.aws_access_key_id == "test"
+            and self.aws_secret_access_key == "test"
+            and self.aws_endpoint_url is None
+        ):
+            raise ValueError(
+                "AWS credentials are set to LocalStack defaults ('test'/'test') but "
+                "AWS_ENDPOINT_URL is not configured. Set real credentials or point "
+                "AWS_ENDPOINT_URL to your LocalStack instance."
+            )
+        return self
 
 
 settings = Settings()

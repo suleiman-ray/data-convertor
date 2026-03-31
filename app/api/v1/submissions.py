@@ -192,7 +192,7 @@ async def get_fhir_bundle(
         logger.exception("Failed to fetch bundle from S3 uri=%s", bundle_row.bundle_uri)
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
-            detail=f"Could not retrieve bundle from storage: {exc}",
+            detail="Could not retrieve bundle from storage.",
         )
 
     return BundleMetaResponse(
