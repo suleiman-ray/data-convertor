@@ -19,7 +19,20 @@ ingestion/build can run without a separate API approve step.
 Usage:
   python scripts/load_seed.py
 
+  docker compose run --rm -e SEED_REPLACE_TEMPLATES=1 seed
+
 Expects DATABASE_URL in the environment (same as the API).
+
+When ``SEED_REPLACE_TEMPLATES`` is set to ``1``/``true``/``yes``:
+
+- An existing **approved** template for each seed row is updated in place
+  (``template_json``, ``placeholder_schema``, ``template_version``) instead of skipped.
+- An existing **active** field mapping for ``(intake_type_id, intake_type_version,
+  stable_field_id)`` is updated to the seed ``canonical_id`` when it differs, instead
+  of raising a conflict.
+
+Use this after changing ``seed/templates.json`` or ``seed/mappings.json`` so the DB
+matches the repo without manual SQL.
 
 Payload shapes match **ConceptCreate**, **MappingCreate**, and **TemplateCreate** in
 **app/schemas/authoring.py**. For CI validation rules see **app/services/seed_validation.py**.
@@ -98,15 +111,28 @@ async def main() -> int:
             logger.error("templates.json must be a JSON array")
             return 1
 
+    seed_replace = os.environ.get("SEED_REPLACE_TEMPLATES", "").lower() in (
+        "1",
+        "true",
+        "yes",
+    )
+
     concepts_created = 0
     concepts_skipped = 0
     mappings_created = 0
     mappings_skipped = 0
+    mappings_updated = 0
     templates_created = 0
     templates_skipped = 0
+    templates_updated = 0
     errors = []
 
     async with AsyncSessionLocal() as db:
+        from sqlalchemy import select
+
+        from app.core.redis import invalidate_cached_mapping
+        from app.models.field_to_canonical import FieldToCanonical
+
         for i, raw in enumerate(concepts_data):
             try:
                 data = ConceptCreate.model_validate(raw)
@@ -145,8 +171,44 @@ async def main() -> int:
                     data.canonical_id,
                 )
             except MappingConflict:
-                mappings_skipped += 1
-                logger.debug("Mapping already exists for %s", data.stable_field_id)
+                if seed_replace:
+                    existing = await db.scalar(
+                        select(FieldToCanonical).where(
+                            FieldToCanonical.intake_type_id == data.intake_type_id,
+                            FieldToCanonical.intake_type_version == data.intake_type_version,
+                            FieldToCanonical.stable_field_id == data.stable_field_id,
+                            FieldToCanonical.active.is_(True),
+                        )
+                    )
+                    if (
+                        existing is not None
+                        and existing.canonical_id != data.canonical_id
+                    ):
+                        existing.canonical_id = data.canonical_id
+                        existing.mapping_method = data.mapping_method
+                        existing.approved_by = data.approved_by
+                        await db.commit()
+                        await invalidate_cached_mapping(
+                            data.intake_type_id,
+                            data.intake_type_version,
+                            data.stable_field_id,
+                        )
+                        mappings_updated += 1
+                        logger.info(
+                            "Updated mapping: %s/%s %s -> %s",
+                            data.intake_type_id,
+                            data.intake_type_version,
+                            data.stable_field_id,
+                            data.canonical_id,
+                        )
+                    else:
+                        mappings_skipped += 1
+                        logger.debug(
+                            "Mapping unchanged for %s", data.stable_field_id
+                        )
+                else:
+                    mappings_skipped += 1
+                    logger.debug("Mapping already exists for %s", data.stable_field_id)
             except MappingReferenceError as e:
                 errors.append(
                     f"mapping {data.stable_field_id} -> {data.canonical_id}: {e}"
@@ -170,12 +232,25 @@ async def main() -> int:
                     db, data.intake_type_id, data.intake_type_version
                 )
                 if existing is not None:
-                    templates_skipped += 1
-                    logger.debug(
-                        "Approved template already exists for %s/%s, skipping",
-                        data.intake_type_id,
-                        data.intake_type_version,
-                    )
+                    if seed_replace:
+                        existing.template_json = data.template_json
+                        existing.placeholder_schema = data.placeholder_schema
+                        existing.template_version = data.template_version
+                        await db.commit()
+                        templates_updated += 1
+                        logger.info(
+                            "Updated approved template for %s/%s template_id=%s",
+                            data.intake_type_id,
+                            data.intake_type_version,
+                            existing.template_id,
+                        )
+                    else:
+                        templates_skipped += 1
+                        logger.debug(
+                            "Approved template already exists for %s/%s, skipping",
+                            data.intake_type_id,
+                            data.intake_type_version,
+                        )
                     continue
                 created = await create_template(db, data)
                 await approve_template(db, created.template_id, approved_by)
@@ -196,13 +271,15 @@ async def main() -> int:
                 )
 
     logger.info(
-        "Seed load complete: concepts created=%s skipped=%s; mappings created=%s skipped=%s; "
-        "templates created=%s skipped=%s",
+        "Seed load complete: concepts created=%s skipped=%s; mappings created=%s updated=%s "
+        "skipped=%s; templates created=%s updated=%s skipped=%s",
         concepts_created,
         concepts_skipped,
         mappings_created,
+        mappings_updated,
         mappings_skipped,
         templates_created,
+        templates_updated,
         templates_skipped,
     )
     if errors:

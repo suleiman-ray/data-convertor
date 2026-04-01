@@ -1,13 +1,13 @@
 """Add index on canonical_values.canonical_id for join/filter performance.
 
-Revision ID: canonical_values_canonical_id_idx_001
+Revision ID: cv_canonical_id_idx_01 (max 32 chars for alembic_version)
 Revises: structured_text_format_001
 """
 
 import sqlalchemy as sa
 from alembic import op
 
-revision = "canonical_values_canonical_id_idx_001"
+revision = "cv_canonical_id_idx_01"
 down_revision = "structured_text_format_001"
 branch_labels = None
 depends_on = None
