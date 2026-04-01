@@ -297,18 +297,32 @@ def _collect_placeholders(node: Any) -> list[str]:
     return []
 
 
+def _parse_bundle_dict(bundle_dict: dict) -> None:
+    """
+    Parse ``bundle_dict`` with fhir.resources ``Bundle``.
+
+    Newer ``fhir.resources`` (Pydantic v2) expose ``model_validate``; older
+    stacks still use ``parse_obj``. CI may resolve a slightly different pin than
+    local dev, so both paths are supported.
+    """
+    if hasattr(Bundle, "model_validate"):
+        Bundle.model_validate(bundle_dict)
+    else:
+        Bundle.parse_obj(bundle_dict)
+
+
 def _validate_bundle(bundle_dict: dict) -> list[str]:
     """
     Validate a FHIR R4 bundle with fhir.resources.
     Returns a list of error strings (empty list means valid).
 
-    ``Bundle.model_validate`` normally raises :class:`pydantic.ValidationError`
-    for schema violations. We also catch any other exception so a rare
-    ``TypeError`` / internal error still becomes a validation failure record
-    instead of crashing the worker loop.
+    Parsing normally raises :class:`pydantic.ValidationError` for schema
+    violations. We also catch any other exception so a rare ``TypeError`` /
+    internal error still becomes a validation failure record instead of
+    crashing the worker loop.
     """
     try:
-        Bundle.model_validate(bundle_dict)
+        _parse_bundle_dict(bundle_dict)
         return []
     except ValidationError as exc:
         logger.warning("fhir-builder: FHIR R4 validation failed: %s", exc)

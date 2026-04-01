@@ -21,13 +21,13 @@ def test_validate_bundle_validation_error_returns_string():
 
 
 def test_validate_bundle_non_validation_error_becomes_error_list(monkeypatch):
-    """If model_validate raises something other than ValidationError, worker-style path still gets a list."""
+    """If parsing raises something other than ValidationError, path still returns a list."""
     from app.workers import fhir_builder_worker as fb
 
     def boom(_d):
         raise TypeError("simulated internal error")
 
-    monkeypatch.setattr(fb.Bundle, "model_validate", staticmethod(boom))
+    monkeypatch.setattr(fb, "_parse_bundle_dict", boom)
     errs = _validate_bundle({"resourceType": "Bundle"})
     assert len(errs) == 1
     assert "simulated internal error" in errs[0]
